@@ -65,15 +65,15 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg text-gray-300">
           <div className="bg-black/20 rounded-xl p-6 backdrop-blur-sm">
             <h4 className="text-xl font-medium mb-3 text-coral">Electronic Roots</h4>
-            <p>From Aphex Twin's experimental soundscapes to Four Tet's melodic constructions and Burial's atmospheric textures, our electronic influences create the foundation for our layered production approach.</p>
+            <p>From Aphex Twin&apos;s experimental soundscapes to Four Tet&apos;s melodic constructions and Burial&apos;s atmospheric textures, our electronic influences create the foundation for our layered production approach.</p>
           </div>
           <div className="bg-black/20 rounded-xl p-6 backdrop-blur-sm">
             <h4 className="text-xl font-medium mb-3 text-cyan-400">Hip-Hop Elements</h4>
-            <p>We draw rhythmic inspiration from J Dilla's innovative drum patterns, Madlib's sample manipulation, and the narrative storytelling approach of Kendrick Lamar.</p>
+            <p>We draw rhythmic inspiration from J Dilla&apos;s innovative drum patterns, Madlib&apos;s sample manipulation, and the narrative storytelling approach of Kendrick Lamar.</p>
           </div>
           <div className="bg-black/20 rounded-xl p-6 backdrop-blur-sm">
             <h4 className="text-xl font-medium mb-3 text-emerald-400">Indie Sensibilities</h4>
-            <p>Our melodic approach is shaped by Radiohead's sonic innovations, Bon Iver's emotional resonance, and the textural experimentation of Sigur Rós.</p>
+            <p>Our melodic approach is shaped by Radiohead&apos;s sonic innovations, Bon Iver&apos;s emotional resonance, and the textural experimentation of Sigur Rós.</p>
           </div>
           <div className="bg-black/20 rounded-xl p-6 backdrop-blur-sm">
             <h4 className="text-xl font-medium mb-3 text-amber-400">Classical Foundations</h4>
