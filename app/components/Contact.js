@@ -16,7 +16,7 @@ export default function Contact() {
         <div>
           <h2 className="text-4xl font-bold mb-4 text-coral">Get in touch</h2>
           <p className="text-lg">
-            We'd love to hear from you! Whether it's for a collaboration or just to say hi.
+            We&apos;d love to hear from you! Whether it&apos;s for a collaboration or just to say hi.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function Contact() {
         {/* Success Message */}
         {state.succeeded && (
           <div className="mt-6 text-center text-coral">
-            <p>Thanks for your message! We'll get back to you soon.</p>
+            <p>Thanks for your message! We&apos;ll get back to you soon.</p>
           </div>
         )}
 

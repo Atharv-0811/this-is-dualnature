@@ -315,7 +315,7 @@ export default function Discography() {
             Multi-Genre Magic
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Explore Dualnature's versatile discography spanning electronic, hip-hop, ambient and experimental sounds
+            Explore Dualnature&apos;s versatile discography spanning electronic, hip-hop, ambient and experimental sounds
           </p>
         </motion.div>
 
@@ -464,7 +464,7 @@ export default function Discography() {
           className="mt-16 pt-10 border-t border-white/10 text-center"
         >
           <p className="text-white/60 max-w-lg mx-auto">
-            Dualnature's music traverses boundaries, blending electronic foundations with organic elements to create unique sonic landscapes.
+            Dualnature&apos;s music traverses boundaries, blending electronic foundations with organic elements to create unique sonic landscapes.
           </p>
         </motion.div>
       </div>
