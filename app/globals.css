@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 80px; /* Add padding to account for fixed navbar */
 }
 
 :root {
@@ -24,5 +25,4 @@ body {
   height: auto;
   margin: 0;
   padding: 0;
-  
 }

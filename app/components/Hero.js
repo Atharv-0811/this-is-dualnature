@@ -30,7 +30,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-gray-800 to-black opacity-70 z-10" />
             <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-no-repeat" />
             <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-                <span className="text-5xl md:text-7xl font-poppins tracking-wide transition-all duration-500 ease-in-out transform">This is </span>
+                <span className="text-5xl md:text-6xl font-grotesk tracking-wide transition-all duration-500 ease-in-out transform">THIS IS </span>
                 <h1
                     className={`text-5xl md:text-7xl font-bold tracking-wide transition-all duration-500 ease-in-out transform ${fontClasses[fontIndex]}`}
                     style={{ willChange: 'transform, opacity' }}

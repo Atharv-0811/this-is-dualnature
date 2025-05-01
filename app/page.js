@@ -8,7 +8,8 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Hero from './components/Hero';
 import AOSInit from './components/AOSInit';
-
+import LatestVideo from './components/LatestVideo';
+import Demos from './components/Demos';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <AOSInit />
       <Navbar />
       <Hero />
+      <LatestVideo />
       <section id="about">
         <About />
       </section>
@@ -28,6 +30,7 @@ export default function Home() {
       <section id="contact">
         <Contact />
       </section>
+      <Demos />
       <Footer />
     </div>
   );

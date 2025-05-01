@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    scrollRestoration: true,
-  },
+  // Removed experimental scroll restoration as it might interfere with smooth scrolling
 };
 
 export default nextConfig;
