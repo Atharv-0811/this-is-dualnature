@@ -13,7 +13,7 @@ import Demos from './components/Demos';
 
 export default function Home() {
   return (
-    <div className="pt-16">
+    <div>
       <AOSInit />
       <Navbar />
       <Hero />
@@ -24,13 +24,13 @@ export default function Home() {
       <section id="discography">
         <Discography />
       </section>
-      <section id="gallery">
+      {/* <section id="gallery">
         <Gallery />
-      </section>
+      </section> */}
+      <Demos />
       <section id="contact">
         <Contact />
       </section>
-      <Demos />
       <Footer />
     </div>
   );

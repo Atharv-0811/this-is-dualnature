@@ -62,9 +62,6 @@ export default function Navbar() {
                     <button onClick={(e) => handleScroll(e, 'discography')} className="hover:text-coral transition">Music</button>
                 </motion.li>
                 <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                    <button onClick={(e) => handleScroll(e, 'gallery')} className="hover:text-coral transition">Gallery</button>
-                </motion.li>
-                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                     <button onClick={(e) => handleScroll(e, 'contact')} className="hover:text-coral transition">Contact</button>
                 </motion.li>
             </motion.ul>

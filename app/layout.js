@@ -1,6 +1,6 @@
 // app/layout.js
 import "./globals.css";
-import { Poppins, Space_Grotesk, Playfair_Display, Barlow, Rubik, Cormorant ,VT323, Fira_Code } from 'next/font/google';
+import { Poppins, Space_Grotesk, Playfair_Display, Barlow, Rubik, Cormorant, VT323, Fira_Code } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600'], variable: '--font-poppins' });
 const grotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-grotesk' });

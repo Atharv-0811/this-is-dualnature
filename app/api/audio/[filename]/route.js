@@ -4,9 +4,16 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET(request, { params }) {
+export async function GET(request, context) {
   try {
-    const filename = params.filename;
+    // Properly destructure and await the params
+    const { params } = context;
+    const filename = params?.filename;
+    
+    if (!filename) {
+      return new NextResponse('Filename parameter is required', { status: 400 });
+    }
+    
     const filePath = path.resolve('./audio', filename);
 
     if (!fs.existsSync(filePath)) {
@@ -31,7 +38,7 @@ export async function GET(request, { params }) {
       headers: {
         'Content-Range': `bytes ${start}-${end}/${stat.size}`,
         'Accept-Ranges': 'bytes',
-        'Content-Length': end - start + 1,
+        'Content-Length': String(end - start + 1),
         'Content-Type': 'audio/mpeg',
         'Cache-Control': 'no-store',
       },
