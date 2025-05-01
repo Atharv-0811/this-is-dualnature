@@ -24,6 +24,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronRight, ExternalLink, Music, Headphones, Users, Zap } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 
 export default function About() {
   const [activeTab, setActiveTab] = useState('story');
@@ -250,10 +251,10 @@ export default function About() {
           </motion.p>
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4">
             <a 
-              href="#discography" 
-              className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-coral to-coral/80 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
+              href="https://www.instagram.com/thisisdualnature/" target='_blank' rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#E1306C] to-coral/80 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
             >
-              Discover Our Music <ChevronRight className="w-4 h-4" />
+              <FaInstagram className="w-4 h-4" /> Discover<ChevronRight className="w-4 h-4" />
             </a>
             <a 
               href="#contact" 

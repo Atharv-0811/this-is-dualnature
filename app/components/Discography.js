@@ -168,6 +168,7 @@ import { FaSpotify, FaYoutube } from 'react-icons/fa';
 import { HiOutlineMusicalNote, HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Discography() {
   const [tracks, setTracks] = useState([]);
@@ -312,7 +313,7 @@ export default function Discography() {
           className="mb-12 text-center"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-3 font-grotesk tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500">
-            Multi-Genre Magic
+            Dualnature Top Songs
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Explore Dualnature&apos;s versatile discography spanning electronic, hip-hop, ambient and experimental sounds
@@ -372,7 +373,7 @@ export default function Discography() {
                     />
                     
                     {/* Play indicator */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
                         <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-black ml-1">
@@ -380,7 +381,7 @@ export default function Discography() {
                           </svg>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   
                   <div className="flex justify-between items-start mb-2">
