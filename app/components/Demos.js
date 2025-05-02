@@ -175,16 +175,17 @@ function formatTime(seconds) {
 
 export default function Demos() {
     return (
-        <section id="demos" className="relative px-6 py-12 text-white">
+        <section id="demos" className="relative px-6 py-2 text-white">
             <div className="absolute inset-0 bg-gradient-to-tl from-black via-gray-900 to-purple-900 z-10" />
             <div className="relative z-20">
-                <h2 className="text-3xl font-bold text-center mb-6">Unreleased Tracks</h2>
+                <h2 className="text-3xl font-bold text-center mb-8">Private Stash 💾</h2>
                 <div className="space-y-8 max-w-3xl mx-auto">
                     {tracks.map((track, i) => (
                         <AudioPlayer key={i} track={track} />
                     ))}
                 </div>
             </div>
+            <div className="py-8"></div>
         </section>
     );
 }

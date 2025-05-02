@@ -26,7 +26,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaShareAlt, FaDownload, FaBookmark } from 'react-icons/fa';
+import { FaPlay, FaShareAlt, FaDownload, FaBookmark, FaSpotify, FaInstagram } from 'react-icons/fa';
 import { HiOutlineSparkles, HiOutlineArrowRight, HiOutlineHeart } from 'react-icons/hi2';
 
 export default function LatestVideo() {
@@ -124,33 +124,35 @@ export default function LatestVideo() {
     }, []);
 
     const handleCtaClick = (action) => {
-        // In a real application, these would trigger appropriate actions
-        console.log(`Action triggered: ${action}`);
-
-        // Example feedback to user
-        alert(`${action} - This would connect to your backend service in production`);
+        if (action === 'Follow') {
+            window.open('https://open.spotify.com/artist/75lxD3C0pgTahGqOSeZFKB?si=a0wUeUg6RzSP_rc8ddHuPg', '_blank', 'noopener,noreferrer'); // Replace with your Spotify artist URL
+        } else if (action === 'Follow on Instagram') {
+            window.open('https://www.instagram.com/thisisdualnature', '_blank', 'noopener,noreferrer'); // Replace with your fan club URL
+        } else if (action === 'Subscribe') {
+            window.open('https://www.youtube.com/@thisisdualnature', '_blank', 'noopener,noreferrer'); // Replace with your YouTube channel URL
+        }
     };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setIsVisible(true);
-            }
-          },
-          { threshold: 0.1 }
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
         );
-    
+
         if (sectionRef.current) {
-          observer.observe(sectionRef.current);
+            observer.observe(sectionRef.current);
         }
-    
+
         return () => {
-          if (sectionRef.current) {
-            observer.unobserve(sectionRef.current);
-          }
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
         };
-      }, []);
+    }, []);
 
     return (
         <section
@@ -333,24 +335,26 @@ export default function LatestVideo() {
                 >
                     <div>
                         <h3 className="text-xl font-semibold">Want More Dualnature?</h3>
-                        <p className="text-gray-300 mt-1">Get exclusive releases, remixes, and behind-the-scenes content</p>
+                        <p className="text-gray-300 mt-1">Explore demos, remixes, and behind-the-scenes content</p>
                     </div>
                     <div className="flex flex-wrap gap-3">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg font-medium shadow-lg shadow-purple-500/20"
-                            onClick={() => handleCtaClick('Join Fanclub')}
+                            className="px-6 py-3 bg-gradient-to-r from-[#EE2A7B] to-[#6228D7] rounded-lg font-medium shadow-lg shadow-purple-500/20 flex items-center space-x-2"
+                            onClick={() => handleCtaClick('Follow on Instagram')}
                         >
-                            Join the Fanclub
+                        <FaInstagram className="h-5 w-5" />
+                        <span>Follow on Instagram</span>
                         </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-6 py-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-lg font-medium"
+                            className="px-6 py-3 bg-white/10 bg-[#1db954] backdrop-blur-sm hover:bg-white/20 rounded-lg font-medium flex items-center space-x-2"
                             onClick={() => handleCtaClick('Follow')}
                         >
-                            Follow on Spotify
+                            <FaSpotify className="h-5 w-5" />
+                            <span>Follow on Spotify</span>
                         </motion.button>
                     </div>
                 </motion.div>

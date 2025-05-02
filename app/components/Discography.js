@@ -17,14 +17,14 @@
 //           throw new Error('Failed to fetch tracks');
 //         }
 //         const data = await res.json();
-        
+
 //         const formattedTracks = await Promise.all(data.tracks.slice(0, 6).map(async track => {
 //           try {
 //             let youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(track.name + ' Dualnature')}`;
 //             // Fetch YouTube link for each track
 //             const youtubeRes = await fetch(`/api/youtube?q=${encodeURIComponent(track.name + ' Dualnature')}`);
 //             const youtubeData = await youtubeRes.json();
-            
+
 //             return {
 //               title: track.name,
 //               year: new Date(track.album.release_date).getFullYear(),
@@ -49,7 +49,7 @@
 //             };
 //           }
 //         }));
-        
+
 //         setTracks(formattedTracks);
 //       } catch (error) {
 //         console.error('Failed to load tracks', error);
@@ -177,12 +177,13 @@ export default function Discography() {
   const [activeGenre, setActiveGenre] = useState('all');
   const [hoveredTrack, setHoveredTrack] = useState(null);
   const audioRef = useRef(null);
-  
+
   // For a real implementation, you would get these from your API
   const genres = [
     { id: 'all', name: 'All Tracks' },
     { id: 'electronic', name: 'Electronic' },
-    { id: 'hip-hop', name: 'Hip-Hop' },
+    { id: 'pop', name: 'Pop' },
+    { id: 'indie', name: 'Indie' },
     { id: 'ambient', name: 'Ambient' },
     { id: 'experimental', name: 'Experimental' }
   ];
@@ -195,10 +196,10 @@ export default function Discography() {
           throw new Error('Failed to fetch tracks');
         }
         const data = await res.json();
-        
+
         // Simulate genre assignment - in a real scenario, this would come from your API
-        const genreMapping = ['electronic', 'hip-hop', 'ambient', 'experimental', 'electronic', 'hip-hop'];
-        
+        const genreMapping = ['pop', 'indie', 'ambient', 'pop', 'electronic', 'electronic'];
+
         const formattedTracks = await Promise.all(data.tracks.slice(0, 6).map(async (track, index) => {
           try {
             const trackGenre = genreMapping[index % genreMapping.length];
@@ -206,7 +207,7 @@ export default function Discography() {
             // Fetch YouTube link for each track
             const youtubeRes = await fetch(`/api/youtube?q=${encodeURIComponent(track.name + ' Dualnature')}`);
             const youtubeData = await youtubeRes.json();
-            
+
             return {
               id: `track-${index}`,
               title: track.name,
@@ -235,7 +236,7 @@ export default function Discography() {
             };
           }
         }));
-        
+
         setTracks(formattedTracks);
       } catch (error) {
         console.error('Failed to load tracks', error);
@@ -249,14 +250,14 @@ export default function Discography() {
   }, []);
 
   // Play audio preview when hovering over a track
-  useEffect(() => { 
+  useEffect(() => {
     if (hoveredTrack && hoveredTrack.previewUrl && audioRef.current) {
       audioRef.current.src = hoveredTrack.previewUrl;
       audioRef.current.play().catch(e => console.log("Audio autoplay prevented:", e));
     } else if (audioRef.current) {
       audioRef.current.pause();
     }
-    
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -264,8 +265,8 @@ export default function Discography() {
     };
   }, [hoveredTrack]);
 
-  const filteredTracks = activeGenre === 'all' 
-    ? tracks 
+  const filteredTracks = activeGenre === 'all'
+    ? tracks
     : tracks.filter(track => track.genre === activeGenre);
 
   if (loading) {
@@ -285,7 +286,7 @@ export default function Discography() {
         <div className="max-w-md mx-auto p-6 bg-gray-800 rounded-xl shadow-xl">
           <h3 className="text-2xl font-bold mb-3">Oops!</h3>
           <p>{error}</p>
-          <button 
+          <button
             className="mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg hover:from-purple-700 hover:to-blue-600 transition-all duration-300"
             onClick={() => window.location.reload()}
           >
@@ -297,15 +298,15 @@ export default function Discography() {
   }
 
   if (tracks.length === 0) {
-    return <div className="text-white text-center py-16">No tracks found</div>;
+    return <div className="text-white text-center py-16">No Tracks Found</div>;
   }
 
   return (
-    <div className="bg-gradient-to-bl from-black via-gray-900 to-purple-900 text-white py-20 min-h-screen">
+    <div className="bg-gradient-to-bl from-black via-gray-900 to-purple-900 text-white py-10 min-h-screen">
       <audio ref={audioRef} className="hidden" />
-      
+
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -316,12 +317,12 @@ export default function Discography() {
             Dualnature Top Songs
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Explore Dualnature&apos;s versatile discography spanning electronic, hip-hop, ambient and experimental sounds
+            Here&apos;s the late-night loops, the accidental bangers, the &apos;wait, this actually kinda goes&apos; moments.
           </p>
         </motion.div>
 
         {/* Genre filter */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -331,11 +332,10 @@ export default function Discography() {
             <button
               key={genre.id}
               onClick={() => setActiveGenre(genre.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center ${
-                activeGenre === genre.id
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center ${activeGenre === genre.id
                   ? 'bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-lg shadow-purple-500/20'
                   : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/80'
-              }`}
+                }`}
             >
               {genre.id !== 'all' && <HiOutlineMusicalNote className="mr-1" />}
               {genre.id === 'all' && <HiMiniArrowTrendingUp className="mr-1" />}
@@ -359,11 +359,11 @@ export default function Discography() {
                 onMouseLeave={() => setHoveredTrack(null)}
               >
                 <div className="absolute inset-0 bg-black/20 z-0"></div>
-                
+
                 {/* Background pattern based on genre */}
-                <div className="absolute inset-0 opacity-10 z-0" 
-                     style={{backgroundImage: getPatternByGenre(track.genre)}}></div>
-                
+                <div className="absolute inset-0 opacity-10 z-0"
+                  style={{ backgroundImage: getPatternByGenre(track.genre) }}></div>
+
                 <div className="relative z-10 p-6">
                   <div className="aspect-square overflow-hidden rounded-lg mb-5 shadow-2xl">
                     <img
@@ -371,7 +371,7 @@ export default function Discography() {
                       alt={track.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
-                    
+
                     {/* Play indicator */}
                     {/* <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
@@ -383,7 +383,7 @@ export default function Discography() {
                       </div>
                     </div> */}
                   </div>
-                  
+
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h3 className="text-xl font-bold tracking-tight">{track.title}</h3>
@@ -416,16 +416,15 @@ export default function Discography() {
                         <FaYoutube size={20} className="text-red-500" />
                       </a>
                     </div>
-                    
+
                     {/* Waveform visualization (purely decorative) */}
                     <div className="flex items-center space-x-1 h-6">
                       {[...Array(5)].map((_, i) => (
-                        <div 
+                        <div
                           key={i}
-                          className={`w-1 bg-white/70 rounded-full transform transition-all duration-300 ${
-                            hoveredTrack?.id === track.id ? 'animate-pulse scale-y-100' : 'scale-y-50'
-                          }`}
-                          style={{ 
+                          className={`w-1 bg-white/70 rounded-full transform transition-all duration-300 ${hoveredTrack?.id === track.id ? 'animate-pulse scale-y-100' : 'scale-y-50'
+                            }`}
+                          style={{
                             height: `${Math.floor(Math.random() * 16) + 5}px`,
                             animationDelay: `${i * 0.1}s`
                           }}
@@ -438,7 +437,7 @@ export default function Discography() {
             ))}
           </AnimatePresence>
         </div>
-        
+
         {/* Visual feedback when no tracks match the filter */}
         {filteredTracks.length === 0 && (
           <motion.div
@@ -446,7 +445,7 @@ export default function Discography() {
             animate={{ opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-xl text-gray-400">No tracks found in this genre.</p>
+            <p className="text-xl text-gray-400">*Cooking*</p>
             <button
               onClick={() => setActiveGenre('all')}
               className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300"
@@ -455,18 +454,15 @@ export default function Discography() {
             </button>
           </motion.div>
         )}
-        
+
         {/* Dynamic bottom visual element */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
           className="mt-16 pt-10 border-t border-white/10 text-center"
         >
-          <p className="text-white/60 max-w-lg mx-auto">
-            Dualnature&apos;s music traverses boundaries, blending electronic foundations with organic elements to create unique sonic landscapes.
-          </p>
         </motion.div>
       </div>
     </div>
@@ -478,12 +474,16 @@ function getGradientByGenre(genre) {
   switch (genre) {
     case 'electronic':
       return 'from-blue-900 to-purple-900';
-    case 'hip-hop':
+    case 'lop':
       return 'from-amber-900 to-rose-900';
     case 'ambient':
       return 'from-teal-900 to-emerald-900';
-    case 'experimental':
-      return 'from-violet-900 to-fuchsia-900';
+    // case 'pop':
+    //   return 'from-[#db6528] to-[#ffa263]';
+    case 'pop':
+      return 'from-charcoal to-charcoal';
+    case 'indie':
+      return 'from-cyan-900 to-[#ceddec]';
     default:
       return 'from-gray-900 to-slate-900';
   }
@@ -499,6 +499,10 @@ function getPatternByGenre(genre) {
       return 'radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.5) 0%, transparent 50%)';
     case 'experimental':
       return 'linear-gradient(135deg, rgba(124, 58, 237, 0.2) 25%, transparent 25%), linear-gradient(225deg, rgba(124, 58, 237, 0.2) 25%, transparent 25%), linear-gradient(45deg, rgba(124, 58, 237, 0.2) 25%, transparent 25%), linear-gradient(315deg, rgba(124, 58, 237, 0.2) 25%, transparent 25%)';
+    case 'pop': // New case for pop
+      return 'radial-gradient(circle at 50% 50%, rgba(255, 105, 180, 0.5) 0%, transparent 50%)';
+    case 'indie': // New case for indie
+      return 'linear-gradient(135deg, rgba(72, 187, 120, 0.5) 25%, transparent 25%)';
     default:
       return 'none';
   }

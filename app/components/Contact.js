@@ -15,9 +15,14 @@ export default function Contact() {
         {/* Left Side */}
         <div>
           <h2 className="text-4xl font-bold mb-4 text-coral">Get in touch</h2>
-          <p className="text-lg">
+          {/* <p className="text-lg">
             We&apos;d love to hear from you! Whether it&apos;s for a collaboration or just to say hi.
+          </p> */}
+          <p>
+            We love talking to people who love music like we do—even if it&apos;s just yelling &apos;bro this slaps&apos; at 2AM.
+            If you&apos;ve got a story, a song idea, a random voice note, or just wanna nerd out about sound—hit us up, believe us, we&apos;d LOVE to talk to talk to you.
           </p>
+          <p className="pt-16">We&apos;ll reply unless we&apos;re mixing. Or sleeping. Or pretending to mix while actually sleeping.</p>
         </div>
 
         {/* Right Side - Contact Form */}

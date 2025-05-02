@@ -53,12 +53,24 @@ export default function About() {
   const tabContent = {
     story: (
       <>
-        <p className="text-lg text-gray-300 mb-6">
-          Born from a chance encounter at a cross-genre music festival, Dualnature represents the harmonic convergence of two distinctly different musical backgrounds. What began as an experimental collaboration quickly evolved into a boundary-pushing project that defies conventional genre classification.
-        </p>
-        <p className="text-lg text-gray-300">
-          Drawing from their multi-instrumental talents and diverse influences spanning electronic, hip-hop, indie rock, and classical training, Dualnature creates immersive sonic landscapes that take listeners on an emotional journey. Their production philosophy embraces the tension between opposing forces—structured and chaotic, familiar and experimental, intimate and expansive.
-        </p>
+        <div className="text-center">
+          <p className="text-lg text-gray-300 mb-6">
+            We&apos;re Dualnature — two friends who met by chance in Mumbai and started making music just because it felt right.
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+            Pradnesh had been moving all around the country thanks to his dad&apos;s army job (basically a human tour of India), and eventually landed in Mumbai, where he met Atharv — a guy who can play more instruments than should be legal. Seriously, he&apos;s a Grade 8 pianist, drummer, guitarist, and probably knows how to play a table fan if you gave him 10 minutes. Pradnesh also plays guitar and keys — and brings the vibe, the chaos, and at least three backup snare options. From that point, music became less of a hobby and more of a shared language.
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+            Now? We're just two 20-year-olds making sounds that don&apos;t really belong to one genre — and we like it that way. Whether it&apos;s mellow, loud, glitchy, or emotional, if it feels real, we roll with it. We make what feels right in the moment. No rules, no labels, no "what are we" talk. We make everything ourselves — from writing to producing to obsessing over a snare for 6 hours straight.
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+          Fast forward to now: we&apos;re working with artists from all over the world — sometimes literally talking through Google Translate. (Yes, that actually happened. Yes, it was wholesome.) But that&apos;s the point: we love connecting with anyone who feels something when they hear music. 
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+            At the end of the day, we&apos;re just two friends who love music, storytelling, and making sounds that feel like home to someone out there.
+          </p >
+        </div>
+
       </>
     ),
     influences: (
@@ -85,43 +97,54 @@ export default function About() {
     ),
     vision: (
       <>
-        <p className="text-lg text-gray-300 mb-6">
-          Dualnature thrives at the intersection of musical worlds. We believe that the most interesting creative territories exist in the spaces between established genres—where electronic production meets organic instrumentation, where pop sensibilities encounter experimental sound design.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          {[
-            {
-              icon: <Music className="w-8 h-8 mb-3 text-coral" />,
-              title: "Genre Fluidity",
-              description: "Creating music that transcends traditional genre boundaries while maintaining a distinctive signature sound."
-            },
-            {
-              icon: <Headphones className="w-8 h-8 mb-3 text-cyan-400" />,
-              title: "Emotional Impact",
-              description: "Crafting sonic experiences that resonate emotionally, taking listeners on a journey through carefully constructed soundscapes."
-            },
-            {
-              icon: <Zap className="w-8 h-8 mb-3 text-emerald-400" />,
-              title: "Innovation",
-              description: "Continuously exploring new production techniques and sound possibilities to push creative boundaries."
-            }
-          ].map((item, index) => (
-            <div key={index} className="bg-black/20 rounded-xl p-6 backdrop-blur-sm flex flex-col items-center text-center">
-              {item.icon}
-              <h4 className="text-xl font-medium mb-2">{item.title}</h4>
-              <p className="text-gray-300">{item.description}</p>
-            </div>
-          ))}
+        <div className="text-center">
+          <p className="text-lg text-gray-300 mb-6">
+            We&apos;re not here to chase trends—we&apos;re here to chase sounds that mean something.
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+            At Dualnature, we don&apos;t box ourselves into one vibe. We&apos;re into whatever feels honest—whether that&apos;s a stripped acoustic loop or a glitched-out synth drop. If it hits emotionally, it stays.
+          </p>
+          <p className="text-lg text-gray-300 mb-6">
+            We come from different places, literally and musically. That&apos;s what makes the process exciting. Every track is a mix of our moods, stories, and random voice notes turned into something real.
+          </p>
+          <p className="text-lg text-gray-300 mb-6 pb-4">
+            We want to make music that connects-not just streams. That means working with people across languages, time zones, and styles to create songs that feel personal and alive.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {[
+              {
+                icon: <Music className="w-8 h-8 mb-3 text-coral" />,
+                title: "Genre? Who cares.",
+                description: "We make what feels right, not what fits a box."
+              },
+              {
+                icon: <Headphones className="w-8 h-8 mb-3 text-cyan-400" />,
+                title: "Feel something.",
+                description: "Our only real goal: if it moves you, it's working."
+              },
+              {
+                icon: <Zap className="w-8 h-8 mb-3 text-emerald-400" />,
+                title: "Keep Exploring.",
+                description: "We're always learning, experimenting, and flipping our process."
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black/20 rounded-xl p-6 backdrop-blur-sm flex flex-col items-center text-center">
+                {item.icon}
+                <h4 className="text-xl font-medium mb-2">{item.title}</h4>
+                <p className="text-gray-300">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </>
     )
   };
 
   return (
-    <section id="about" className="relative py-24 overflow-hidden">
+    <section id="about" className="relative py-8 pb-24 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-black" />
-      
+
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Abstract sound wave patterns */}
@@ -134,7 +157,7 @@ export default function About() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -147,11 +170,11 @@ export default function About() {
           <motion.h2 variants={itemVariants} className="text-5xl font-bold mt-2 mb-4 text-white">
             About Dualnature
           </motion.h2>
-          <motion.div variants={itemVariants} className="w-24 h-1 bg-gradient-to-r from-coral to-cyan-400 mx-auto" />
+          <motion.div variants={itemVariants} className="w-24 h-1 bg-coral mx-auto" />
         </motion.div>
 
         {/* Profile section with images */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -162,9 +185,9 @@ export default function About() {
           <motion.div variants={itemVariants} className="relative group">
             <div className="absolute inset-0 bg-gradient-to-b from-coral to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300 rounded-xl" />
             <div className="aspect-[3/4] overflow-hidden rounded-xl bg-gray-900 relative">
-              <img 
-                src="/images/atharv-chinchkar.jpg" 
-                alt="First member" 
+              <img
+                src="/images/atharv-chinchkar.jpg"
+                alt="First member"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
@@ -173,14 +196,14 @@ export default function About() {
               </div>
             </div>
           </motion.div>
-          
+
           {/* Second member */}
           <motion.div variants={itemVariants} className="relative group">
             <div className="absolute inset-0 bg-gradient-to-b from-cyan-400 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300 rounded-xl" />
             <div className="aspect-[3/4] overflow-hidden rounded-xl bg-gray-900 relative">
-              <img 
-                src="/images/pradnesh-kapte.jpg" 
-                alt="Second member" 
+              <img
+                src="/images/pradnesh-kapte.jpg"
+                alt="Second member"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
@@ -200,25 +223,23 @@ export default function About() {
         >
           {/* Tab navigation */}
           <motion.div variants={itemVariants} className="flex justify-center mb-10">
-            <div className="inline-flex bg-black/30 backdrop-blur-md rounded-full p-1.5">
+            <div className="inline-flex bg-black/30 backdrop-blur-md rounded-full p-1.5 text-center">
               {[
                 { id: 'story', label: 'Our Story' },
-                { id: 'influences', label: 'Influences' },
                 { id: 'vision', label: 'Vision' }
               ].map(tab => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeTab === tab.id 
-                      ? 'text-black' 
-                      : 'text-white/70 hover:text-white'
-                  }`}
+                  className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === tab.id
+                    ? 'text-black'
+                    : 'text-white/70 hover:text-white'
+                    }`}
                 >
                   {activeTab === tab.id && (
                     <motion.div
                       layoutId="activeTabBackground"
-                      className="absolute inset-0 bg-gradient-to-r from-coral to-cyan-400 rounded-full"
+                      className="absolute inset-0 bg-coral rounded-full"
                       style={{ borderRadius: 9999 }}
                       transition={{ type: 'spring', duration: 0.5 }}
                     />
@@ -230,7 +251,7 @@ export default function About() {
           </motion.div>
 
           {/* Tab content */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="bg-black/20 backdrop-blur-md rounded-2xl p-8 md:p-12"
           >
@@ -247,17 +268,17 @@ export default function About() {
           className="mt-20 text-center"
         >
           <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-8">
-            Connect with us and explore our music journey!
+            Connect with us if you want to collaborate, vibe, or just talk music!
           </motion.p>
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4">
-            <a 
+            <a
               href="https://www.instagram.com/thisisdualnature/" target='_blank' rel="noopener noreferrer"
               className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#E1306C] to-coral/80 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
             >
-              <FaInstagram className="w-4 h-4" /> Discover<ChevronRight className="w-4 h-4" />
+              <FaInstagram className="w-5 h-5" /> Discover<ChevronRight className="w-4 h-4" />
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="flex items-center gap-2 px-8 py-4 border border-white/20 rounded-full text-white font-medium hover:bg-white/10 transition-all"
             >
               Get In Touch <Users className="w-4 h-4" />

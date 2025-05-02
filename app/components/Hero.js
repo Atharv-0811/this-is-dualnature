@@ -389,6 +389,8 @@
 
 import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
+import { FaInstagram, FaSpotify, FaYoutube } from "react-icons/fa"
+import { SiApplemusic } from "react-icons/si"
 
 // Musical genre styles with tailwind classes and names
 const genreStyles = [
@@ -407,7 +409,7 @@ const genreStyles = [
     secondaryColor: "to-red-600",
   },
   {
-    name: "INDIE ROCK",
+    name: "INDIE",
     font: "font-barlow",
     color: "text-emerald-400",
     accentColor: "from-emerald-500",
@@ -421,7 +423,7 @@ const genreStyles = [
     secondaryColor: "to-purple-600",
   },
   {
-    name: "SOUL",
+    name: "JAZZ",
     font: "font-playfair",
     color: "text-orange-400",
     accentColor: "from-orange-500",
@@ -631,8 +633,49 @@ export default function Hero() {
               animate={{ opacity: [0.7, 1] }}
               transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
             >
-              {audioPlaying ? "Now Playing" : "Click to Preview"}
+              {/* {audioPlaying ? "Now Playing" : "Click to Preview"} */}
             </motion.span>
+          </motion.div>
+
+          {/* Social Media Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }} // Adjust delay to load later
+            className="flex justify-center space-x-6 mb-6"
+          >
+            <a
+              href="https://www.instagram.com/thisisdualnature"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-coral transition"
+            >
+              <FaInstagram size={30} />
+            </a>
+            <a
+              href="https://open.spotify.com/artist/75lxD3C0pgTahGqOSeZFKB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-green-400 transition"
+            >
+              <FaSpotify size={30} />
+            </a>
+            <a
+              href="https://music.apple.com/us/artist/dualnature/648847519"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-red-500 transition"
+            >
+              <SiApplemusic size={30} />
+            </a>
+            <a
+              href="https://www.youtube.com/@thisisdualnature"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-red-600 transition"
+            >
+              <FaYoutube size={30} />
+            </a>
           </motion.div>
 
           {/* Tagline */}
@@ -640,10 +683,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-light tracking-wide mb-10"
+            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light tracking-wide"
           >
-            Blending boundaries. Creating experiences. Defining new sounds.
+            Dualnature is about connection -
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light tracking-wide mb-10"
+            >through stories, through sound, through feeling</motion.p>
 
           {/* Call to action buttons */}
           <motion.div
@@ -696,6 +745,6 @@ export default function Hero() {
           </svg>
         </motion.div>
       </motion.div>
-    </motion.section>
+    </motion.section >
   )
 }
