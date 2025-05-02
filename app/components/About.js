@@ -120,7 +120,7 @@ export default function About() {
   return (
     <section id="about" className="relative py-24 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-gray-900 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-black" />
       
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">

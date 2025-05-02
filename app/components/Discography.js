@@ -301,7 +301,7 @@ export default function Discography() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white py-20 min-h-screen">
+    <div className="bg-gradient-to-bl from-black via-gray-900 to-purple-900 text-white py-20 min-h-screen">
       <audio ref={audioRef} className="hidden" />
       
       <div className="max-w-7xl mx-auto px-4">

@@ -176,7 +176,7 @@ function formatTime(seconds) {
 export default function Demos() {
     return (
         <section id="demos" className="relative px-6 py-12 text-white">
-            <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-gray-800 to-black opacity-70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-black via-gray-900 to-purple-900 z-10" />
             <div className="relative z-20">
                 <h2 className="text-3xl font-bold text-center mb-6">Unreleased Tracks</h2>
                 <div className="space-y-8 max-w-3xl mx-auto">
