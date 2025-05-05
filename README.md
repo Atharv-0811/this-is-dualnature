@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dualnature Portfolio – Interactive Music Website
 
-## Getting Started
+Welcome to the repository for **Dualnature Portfolio**, an interactive and dynamic website designed to showcase the music duo, Dualnature. This project is built with **Next.js**, **React**, **CSS**, and integrates the **Spotify API** to provide real-time data on tracks, albums, and more. It features scroll-based fade animations and a sleek, mobile-first interface, ensuring a visually engaging experience for visitors.
 
-First, run the development server:
+## Key Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Real-time Music Data:** Integrates Spotify’s API to display live track, album, and artist information.
+* **Scroll-Based Fade Animations:** Smooth animations that enhance the visual appeal while users scroll through the page.
+* **Mobile-First Design:** Optimized for a seamless experience across all devices, with a focus on mobile users.
+* **Spotify Integration:** Display the latest tracks, albums, and artist information directly from Spotify.
+* **SEO Optimized:** The website is optimized for search engines to help grow the artist's online presence.
+* **Responsive and Accessible:** Ensures smooth user experience and accessibility across all screen sizes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Frontend:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Next.js** – For dynamic server-side rendering and fullstack integration.
+* **React** – For building a modular and reusable component structure.
+* **CSS** – For creating the custom animations and responsive layouts.
+* **Tailwind CSS** – For utility-first styling and responsiveness.
 
-## Learn More
+**Backend:**
 
-To learn more about Next.js, take a look at the following resources:
+* **Spotify API** – For fetching and displaying real-time music data.
+* **Node.js** – For backend integrations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Other Tools:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Git/GitHub** – Version control and collaboration.
+* **Vercel** – For deployment and hosting.
 
-## Deploy on Vercel
+## Features in Detail:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* **Dynamic Music Showcase:** Displays music tracks and albums based on real-time Spotify data, which helps fans stay updated with the duo’s latest releases.
+* **Scroll Animation:** Adds a modern touch with smooth fade-in and fade-out transitions as users scroll down the page.
+* **Responsive Layout:** Mobile-first design ensures the portfolio looks stunning on any device, providing an excellent user experience on both desktop and mobile.
+* **Real-Time Updates:** Automatically updates with the latest music tracks and albums via Spotify API, keeping the content fresh and up-to-date.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Screenshots:
+
+
+![Portfolio Screenshot 1](./assets/1.jpg)
+![Portfolio Screenshot 2](./assets/2.jpg)
+![Portfolio Screenshot 3](./assets/3.jpg)
+![Portfolio Screenshot 4](./assets/4.jpg)
+![Portfolio Screenshot 5](./assets/5.jpg)
+![Portfolio Screenshot 6](./assets/6.jpg)
