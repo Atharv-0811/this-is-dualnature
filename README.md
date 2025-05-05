@@ -41,9 +41,9 @@ Welcome to the repository for **Dualnature Portfolio**, an interactive and dynam
 ## Screenshots:
 
 
-![Portfolio Screenshot 1](./assets/1.jpg)
-![Portfolio Screenshot 2](./assets/2.jpg)
-![Portfolio Screenshot 3](./assets/3.jpg)
-![Portfolio Screenshot 4](./assets/4.jpg)
-![Portfolio Screenshot 5](./assets/5.jpg)
-![Portfolio Screenshot 6](./assets/6.jpg)
+![Portfolio Screenshot 1](./assets/1.png)
+![Portfolio Screenshot 2](./assets/2.png)
+![Portfolio Screenshot 3](./assets/3.png)
+![Portfolio Screenshot 4](./assets/4.png)
+![Portfolio Screenshot 5](./assets/5.png)
+![Portfolio Screenshot 6](./assets/6.png)
