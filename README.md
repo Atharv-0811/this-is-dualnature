@@ -37,48 +37,6 @@ Welcome to the repository for **Dualnature Portfolio**, an interactive and dynam
 * **Responsive Layout:** Mobile-first design ensures the portfolio looks stunning on any device, providing an excellent user experience on both desktop and mobile.
 * **Real-Time Updates:** Automatically updates with the latest music tracks and albums via Spotify API, keeping the content fresh and up-to-date.
 
-## Getting Started:
-
-To get started with this project, clone the repository and follow the setup instructions below.
-
-### Prerequisites:
-
-* Node.js (>=14.x.x)
-* NPM or Yarn
-
-### Installation:
-
-1. Clone this repository:
-
-```bash
-git clone https://github.com/Atharv-0811/this-is-dualnature.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd dualnature-portfolio
-```
-
-3. Install dependencies:
-```bash
-npm install
-```
-
-## Setup Spotify API:
-
-1. Create a Spotify Developer account [here](https://developer.spotify.com/dashboard/applications).
-2. Create a new app to get the **Client ID** and **Client Secret**.
-3. Add your credentials to your `.env` file:
-    ```ini
-    SPOTIFY_CLIENT_ID=your-client-id
-    SPOTIFY_CLIENT_SECRET=your-client-secret
-    ```
-4. Run the project:
-    ```bash
-    npm run dev
-    ```
-   The app will be available at `http://localhost:3000`.
 
 ## Screenshots:
 
