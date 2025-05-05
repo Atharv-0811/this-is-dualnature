@@ -51,7 +51,7 @@ To get started with this project, clone the repository and follow the setup inst
 1. Clone this repository:
 
 ```bash
-git clone [https://github.com/yourusername/dualnature-portfolio.git](https://github.com/yourusername/dualnature-portfolio.git)
+git clone [https://github.com/Atharv-0811/this-is-dualnature.git](https://github.com/Atharv-0811/this-is-dualnature.git)
 ```
 
 2. Navigate to the project directory:
