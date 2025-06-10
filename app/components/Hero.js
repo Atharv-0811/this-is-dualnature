@@ -505,7 +505,7 @@ export default function Hero() {
     <motion.section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20 md:pt-0"
       style={{ opacity }}
     >
       {/* Hidden audio element */}
