@@ -53,7 +53,7 @@ export default function About() {
   const tabContent = {
     story: (
       <>
-        <div className="text-center">
+        <div className="text-justify">
           <p className="text-lg text-gray-300 mb-6">
             We&apos;re Dualnature — two friends who met by chance in Mumbai and started making music just because it felt right.
           </p>

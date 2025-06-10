@@ -1,32 +1,8 @@
-// export default function LatestVideo() {
-//     return (
-//         <section id="latest-video" className="bg-black text-white py-16 px-4">
-//             <div className="max-w-4xl mx-auto text-center space-y-8">
-//                 <h2 className="text-3xl md:text-4xl font-semibold">Latest Release</h2>
-//                 <div className="aspect-video w-full">
-//                     <iframe
-//                         className="w-full h-full rounded-xl shadow-lg"
-//                         src="https://www.youtube.com/embed/xCkIqadBMOE"
-//                         title="Latest Song - Dualnature"
-//                         frameBorder="0"
-//                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//                         allowFullScreen
-//                     ></iframe>
-//                 </div>
-
-//             </div>
-//         </section>
-//     );
-// }
-
-
-
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaShareAlt, FaDownload, FaBookmark, FaSpotify, FaInstagram } from 'react-icons/fa';
+import { FaPlay, FaShareAlt, FaDownload, FaBookmark, FaSpotify, FaInstagram, FaYoutube, FaApple } from 'react-icons/fa';
 import { HiOutlineSparkles, HiOutlineArrowRight, HiOutlineHeart } from 'react-icons/hi2';
 
 export default function LatestVideo() {
@@ -42,11 +18,11 @@ export default function LatestVideo() {
 
     // Video information
     const videoInfo = {
-        title: "Jo Keh Na Saka",
-        description: "A song about unrequited love and longing, featuring heartfelt melodies and emotional lyrics.",
-        released: "August 6, 2024",
+        title: "Rose Lenses",
+        description: "From a timeless painting to unyielding resolve, this song explores finding freedom in floating above it all.",
+        released: "June 11, 2025",
         duration: "3:42",
-        genre: "Pop / Heartbreak"
+        genre: "Jazz Pop"
     };
 
     // Simulate social stats
@@ -235,35 +211,37 @@ export default function LatestVideo() {
                         </div> */}
 
                         {/* Call to Action Buttons */}
-                        <div className="flex flex-wrap gap-3 pt-2">
+                        <div className="text-2xl"><p>Listen on : </p></div>
+                        <div className="flex gap-3 pt-2 w-full">
+                            
+                            
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-5 py-2.5 bg-coral to-blue-500 rounded-lg font-medium flex items-center space-x-2 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300"
-                                onClick={() => handleCtaClick('Subscribe')}
+                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#1db954] text-white rounded-lg"
+                                onClick={() => window.open('https://open.spotify.com/album/4Jdg1NOrLi27pYsYPuTaA6?si=dogLzpEpQgCOkY-_prMNgg', '_blank', 'noopener,noreferrer')}
+                                aria-label="Listen on Spotify"
                             >
-                                <span>Subscribe</span>
-                                <HiOutlineArrowRight className="h-4 w-4" />
+                                <FaSpotify className="h-5 w-5" />
                             </motion.button>
-
-                            {/* <motion.button
-                                whileHover={{ scale: 1.05 }}
+                            <motion.button
+                                whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-5 py-2.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-lg font-medium flex items-center space-x-2 transition-all duration-300"
-                                onClick={() => handleCtaClick('Download')}
+                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#e95665] text-white rounded-lg"
+                                onClick={() => window.open('https://music.apple.com/us/album/rose-lenses-single/1813632776', '_blank', 'noopener,noreferrer')}
+                                aria-label="Listen on Apple Music"
                             >
-                                <FaDownload className="h-3.5 w-3.5" />
-                                <span>Download</span>
-                            </motion.button> */}
-
-                            {/* <motion.button
-                                whileHover={{ scale: 1.05 }}
+                                <FaApple className="h-5 w-5" />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-2.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-lg transition-all duration-300"
-                                onClick={() => handleCtaClick('Save')}
+                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#FF0000] text-white rounded-lg"
+                                onClick={() => window.open('https://music.youtube.com/watch?v=MRxUxcNAWkg', '_blank', 'noopener,noreferrer')}
+                                aria-label="Listen on YouTube Music"
                             >
-                                <FaBookmark className="h-4 w-4" />
-                            </motion.button> */}
+                                <FaYoutube className="h-5 w-5" />
+                            </motion.button>
                         </div>
                     </motion.div>
 
@@ -280,7 +258,7 @@ export default function LatestVideo() {
                                 <iframe
                                     ref={videoRef}
                                     className="w-full h-full"
-                                    src="https://www.youtube.com/embed/xCkIqadBMOE?enablejsapi=1&controls=0&rel=0&modestbranding=1"
+                                    src="https://www.youtube.com/embed/MRxUxcNAWkg?si=bCmkMw51rHdizUl9"
                                     title={videoInfo.title}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

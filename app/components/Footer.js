@@ -34,7 +34,7 @@ export default function Footer() {
         <p className="text-sm text-gray-400 py-4 pt-8">
           Developed by{' '}
           <a
-            href="https://github.com/Atharv-0811"
+            href="https://atharvchinchkar.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-coral hover:underline"
