@@ -228,7 +228,7 @@ export default function LatestVideo() {
                                 whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex-1 flex items-center justify-center px-4 py-3 bg-[#e95665] text-white rounded-lg"
-                                onClick={() => window.open('https://music.apple.com/us/album/rose-lenses-single/1813632776', '_blank', 'noopener,noreferrer')}
+                                onClick={() => window.open('https://music.apple.com/in/album/rose-lenses/1813632776?i=1813632777', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on Apple Music"
                             >
                                 <FaApple className="h-5 w-5" />
@@ -258,7 +258,7 @@ export default function LatestVideo() {
                                 <iframe
                                     ref={videoRef}
                                     className="w-full h-full"
-                                    src="https://www.youtube.com/embed/MRxUxcNAWkg?si=bCmkMw51rHdizUl9"
+                                    src="https://www.youtube.com/embed/8H6Z2Of1cjA?si=aSwCLGDuyHk_h3W_"
                                     title={videoInfo.title}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
