@@ -447,15 +447,15 @@ export default function Hero() {
   // For animated soundwave visualization
   const [soundBars, setSoundBars] = useState(Array.from({ length: 12 }, () => Math.random() * 0.8 + 0.2))
 
-  // For scroll-based fade animation
-  const { scrollY } = useScroll()
-  const opacity = useTransform(
-    scrollY,
-    // Start fading out when scrolling past 10% of the section height
-    // Complete fade out at 90% of the section height
-    [0, 300, 600],
-    [1, 1, 0],
-  )
+  // // For scroll-based fade animation
+  // const { scrollY } = useScroll()
+  // const opacity = useTransform(
+  //   scrollY,
+  //   // Start fading out when scrolling past 10% of the section height
+  //   // Complete fade out at 90% of the section height
+  //   [0, 300, 600],
+  //   [1, 1, 0],
+  // )
 
   useEffect(() => {
     // Genre rotation
@@ -506,7 +506,7 @@ export default function Hero() {
       ref={sectionRef}
       id="home"
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20 md:pt-0"
-      style={{ opacity }}
+      // style={{ opacity }}
     >
       {/* Hidden audio element */}
       <audio ref={audioRef} src="/api/audio/preview.mp3" loop onEnded={() => setAudioPlaying(false)} />

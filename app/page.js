@@ -17,8 +17,9 @@ export default function Home() {
       <AOSInit />
       <TopBanner />
       <Navbar />
-      <Hero />
       <LatestVideo />
+      <Hero />
+      {/* <LatestVideo /> */}
       <section id="about">
         <About />
       </section>

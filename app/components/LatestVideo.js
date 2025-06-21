@@ -134,7 +134,7 @@ export default function LatestVideo() {
         <section
             id="latest-video"
             ref={sectionRef}
-            className="relative bg-gradient-to-br from-black via-gray-900 to-purple-950 text-white py-24 px-4 overflow-hidden"
+            className="relative bg-gradient-to-br from-black via-gray-900 to-purple-950 text-white py-16 px-4 overflow-hidden min-h-screen mt-24 md:py-24 md:mt-26"
         >
 
             {/* Background elements */}
@@ -183,17 +183,14 @@ export default function LatestVideo() {
                             {videoInfo.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-4 text-sm">
+                        {/* <div className="flex flex-wrap gap-4 text-sm">
                             <div className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full">
                                 Released: {videoInfo.released}
                             </div>
-                            {/* <div className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full">
-                                Duration: {videoInfo.duration}
-                            </div> */}
                             <div className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full">
                                 {videoInfo.genre}
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* <div className="flex items-center space-x-6 pt-2">
                             <div className="flex items-center space-x-1">
@@ -211,37 +208,37 @@ export default function LatestVideo() {
                         </div> */}
 
                         {/* Call to Action Buttons */}
-                        <div className="text-2xl"><p>Listen on : </p></div>
-                        <div className="flex gap-3 pt-2 w-full">
-                            
-                            
+                        <div className="flex flex-col gap-3 pt-2 w-full">
                             <motion.button
-                                whileHover={{ scale: 1.15 }}
+                                whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#1db954] text-white rounded-lg"
+                                className="flex items-center justify-center px-6 py-4 bg-[#1db954] text-white rounded-lg font-medium text-lg"
                                 onClick={() => window.open('https://open.spotify.com/album/4Jdg1NOrLi27pYsYPuTaA6?si=dogLzpEpQgCOkY-_prMNgg', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on Spotify"
                             >
-                                <FaSpotify className="h-5 w-5" />
+                                <FaSpotify className="h-6 w-6 mr-2" />
+                                <span>Listen on Spotify</span>
                             </motion.button>
                             <motion.button
-                                whileHover={{ scale: 1.15 }}
+                                whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#e95665] text-white rounded-lg"
-                                onClick={() => window.open('https://music.apple.com/in/album/rose-lenses/1813632776?i=1813632777', '_blank', 'noopener,noreferrer')}
-                                aria-label="Listen on Apple Music"
-                            >
-                                <FaApple className="h-5 w-5" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.15 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex-1 flex items-center justify-center px-4 py-3 bg-[#FF0000] text-white rounded-lg"
+                                className="flex items-center justify-center px-6 py-4 bg-[#FF0000] text-white rounded-lg font-medium text-lg"
                                 onClick={() => window.open('https://music.youtube.com/watch?v=MRxUxcNAWkg', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on YouTube Music"
                             >
-                                <FaYoutube className="h-5 w-5" />
+                                <FaYoutube className="h-6 w-6 mr-2" />
+                                <span>Listen on YouTube Music</span>
                             </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="flex items-center justify-center px-6 py-4 bg-[#fa536b] text-white rounded-lg font-medium text-lg"
+                                onClick={() => window.open('https://music.apple.com/in/album/rose-lenses/1813632776?i=1813632777', '_blank', 'noopener,noreferrer')}
+                                aria-label="Listen on Spotify"
+                            > <FaApple className="h-6 w-6 mr-2" />
+                                <span>Listen on Apple Music</span>
+                            </motion.button>
+
                         </div>
                     </motion.div>
 
@@ -322,8 +319,8 @@ export default function LatestVideo() {
                             className="px-6 py-3 bg-gradient-to-r from-[#EE2A7B] to-[#6228D7] rounded-lg font-medium shadow-lg shadow-purple-500/20 flex items-center space-x-2"
                             onClick={() => handleCtaClick('Follow on Instagram')}
                         >
-                        <FaInstagram className="h-5 w-5" />
-                        <span>Follow on Instagram</span>
+                            <FaInstagram className="h-5 w-5" />
+                            <span>Follow on Instagram</span>
                         </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
