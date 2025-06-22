@@ -14,13 +14,17 @@ const funky = VT323({ subsets: ['latin'], weight: ['400'], variable: '--font-fun
 const mono = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600'], variable: '--font-mono' });
 
 export const metadata = {
-  title: "Dualnature",
-  description: "Dualnature music",
+  title: "This is Dualnature",
+  description: "Dualnature Music",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} ${grotesk.variable} ${playfair.variable} ${barlow.variable} ${rubik.variable} ${outfit.variable} ${funky.variable} ${mono.variable}`}>
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href="/logo/logo.svg" type="image/svg+xml" />
+      </head>
       <body className="font-sans">
         {/* Google Analytics */}
         <Script
