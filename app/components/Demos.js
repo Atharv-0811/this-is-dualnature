@@ -161,8 +161,8 @@ const tracks = [
         src: "/api/audio/look_at_the_sky_demo.mp3",
     },
     {
-        title: "chilllikedat",
-        src: "/api/audio/chilllikedat.mp3",
+        title: "Red Brick Motel",
+        src: "/api/audio/Country.flac",
     },
 ];
 
