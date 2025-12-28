@@ -1,34 +1,9 @@
-// // components/Navbar.js
-// 'use client';
-// import { motion } from 'framer-motion';
-
-// export default function Navbar() {
-//     const handleScroll = (e, targetId) => {
-//         e.preventDefault();
-//         const targetSection = document.getElementById(targetId);
-//         if (targetSection) {
-//             targetSection.scrollIntoView({ behavior: 'smooth' });
-//         }
-//     };
-
-//     return (
-//         <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-charcoal bg-opacity-70 hover:bg-opacity-100 text-white px-8 py-3 border border-gray-500 border-opacity-300 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 z-50">
-//             <ul className="flex space-x-6">
-//                 <li><a onClick={(e) => handleScroll(e, 'home')} href="#home" className="hover:text-coral transition">Home</a></li>
-//                 <li><a onClick={(e) => handleScroll(e, 'about')} href="#about" className="hover:text-coral transition">About</a></li>
-//                 <li><a onClick={(e) => handleScroll(e, 'discography')} href="#discography" className="hover:text-coral transition">Music</a></li>
-//                 <li><a onClick={(e) => handleScroll(e, 'gallery')} href="#gallery" className="hover:text-coral transition">Gallery</a></li>
-//                 <li><a onClick={(e) => handleScroll(e, 'contact')} href="#contact" className="hover:text-coral transition">Contact</a></li>
-//             </ul>
-//         </nav>
-//     );
-// }
-
 'use client';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 export default function Navbar() {
-    const handleScroll = (e, targetId) => {
+    const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
         e.preventDefault();
         const targetSection = document.getElementById(targetId);
         if (targetSection) {

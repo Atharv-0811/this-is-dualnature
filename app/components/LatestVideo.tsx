@@ -2,19 +2,24 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaShareAlt, FaDownload, FaBookmark, FaSpotify, FaInstagram, FaYoutube, FaApple } from 'react-icons/fa';
-import { HiOutlineSparkles, HiOutlineArrowRight, HiOutlineHeart } from 'react-icons/hi2';
+import { FaSpotify, FaInstagram, FaYoutube, FaApple } from 'react-icons/fa';
+import { HiOutlineSparkles } from 'react-icons/hi2';
+
+declare global {
+    interface Window {
+        YT: any;
+        onYouTubeIframeAPIReady: () => void;
+    }
+}
 
 export default function LatestVideo() {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [showOverlay, setShowOverlay] = useState(true);
-    const [videoLoaded, setVideoLoaded] = useState(false);
-    const videoRef = useRef(null);
-    const overlayRef = useRef(null);
-
-    // Track visibility for scroll animations
+    // Unused state commented out
+    // const [isPlaying, setIsPlaying] = useState(false);
+    // const [showOverlay, setShowOverlay] = useState(true);
+    // const [videoLoaded, setVideoLoaded] = useState(false);
+    const videoRef = useRef<HTMLIFrameElement>(null);
+    const sectionRef = useRef<HTMLElement>(null);
     const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
 
     // Video information
     const videoInfo = {
@@ -25,21 +30,14 @@ export default function LatestVideo() {
         genre: "Jazz Pop"
     };
 
-    // Simulate social stats
-    const socialStats = {
-        views: "127K",
-        likes: "9.8K",
-        shares: "2.4K"
-    };
-
-    const handlePlayClick = () => {
-        if (videoRef.current) {
-            // Post message to iframe to play video
-            videoRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            setIsPlaying(true);
-            setShowOverlay(false);
-        }
-    };
+    // const handlePlayClick = () => {
+    //     if (videoRef.current && videoRef.current.contentWindow) {
+    //         // Post message to iframe to play video
+    //         videoRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    //         setIsPlaying(true);
+    //         setShowOverlay(false);
+    //     }
+    // };
 
     // Handle visibility detection for animations
     useEffect(() => {
@@ -70,11 +68,13 @@ export default function LatestVideo() {
             const tag = document.createElement('script');
             tag.src = 'https://www.youtube.com/iframe_api';
             const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            if (firstScriptTag && firstScriptTag.parentNode) {
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
         }
 
         // Function to handle messages from the iframe
-        const handleMessage = (event) => {
+        const handleMessage = (event: MessageEvent) => {
             // Only handle messages from YouTube
             if (event.origin !== 'https://www.youtube.com') return;
 
@@ -82,9 +82,9 @@ export default function LatestVideo() {
                 const data = JSON.parse(event.data);
                 if (data.event === 'onStateChange') {
                     // 1 = playing, 2 = paused, 0 = ended
-                    setIsPlaying(data.info === 1);
+                    // setIsPlaying(data.info === 1);
                     if (data.info === 0) {
-                        setShowOverlay(true);
+                        // setShowOverlay(true);
                     }
                 }
             } catch (e) {
@@ -99,7 +99,7 @@ export default function LatestVideo() {
         };
     }, []);
 
-    const handleCtaClick = (action) => {
+    const handleCtaClick = (action: string) => {
         if (action === 'Follow') {
             window.open('https://open.spotify.com/artist/75lxD3C0pgTahGqOSeZFKB?si=a0wUeUg6RzSP_rc8ddHuPg', '_blank', 'noopener,noreferrer'); // Replace with your Spotify artist URL
         } else if (action === 'Follow on Instagram') {
@@ -108,27 +108,6 @@ export default function LatestVideo() {
             window.open('https://www.youtube.com/@thisisdualnature', '_blank', 'noopener,noreferrer'); // Replace with your YouTube channel URL
         }
     };
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
 
     return (
         <section
@@ -139,7 +118,6 @@ export default function LatestVideo() {
 
             {/* Background elements */}
             <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-black to-gray-900 backdrop-blur-md" />
-            {/* <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-gray-900 to-gray-900 backdrop-blur-md" /> */}
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
@@ -151,12 +129,6 @@ export default function LatestVideo() {
                     <path fill="currentColor" d="M38.1,-51.1C51.6,-40.8,66.5,-32.5,72.5,-19.8C78.6,-7.1,75.8,10,68.5,24.3C61.2,38.6,49.3,50.1,35.6,58.6C21.8,67.1,6.2,72.5,-7.5,69.5C-21.2,66.6,-33.1,55.2,-44.4,43.1C-55.8,30.9,-66.7,17.9,-71.3,1.9C-75.9,-14,-74.2,-31.9,-64.8,-43.3C-55.3,-54.7,-38.1,-59.5,-23.4,-59.7C-8.7,-59.9,3.6,-55.5,17,-50.8C30.5,-46.1,45.2,-41.2,51.6,-32.4C58,-23.7,57.1,-11.8,56.7,-0.2L58.1,3.8" transform="translate(100 100)" />
                 </svg>
             </div>
-            {/* Animated background elements */}
-            {/* <div className="absolute inset-0 overflow-hidden opacity-20">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20 animate-blob"></div>
-                <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-            </div> */}
 
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
@@ -182,30 +154,6 @@ export default function LatestVideo() {
                         <p className="text-gray-300 text-lg">
                             {videoInfo.description}
                         </p>
-
-                        {/* <div className="flex flex-wrap gap-4 text-sm">
-                            <div className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full">
-                                Released: {videoInfo.released}
-                            </div>
-                            <div className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full">
-                                {videoInfo.genre}
-                            </div>
-                        </div> */}
-
-                        {/* <div className="flex items-center space-x-6 pt-2">
-                            <div className="flex items-center space-x-1">
-                                <span className="text-sm text-gray-400">Views</span>
-                                <span className="font-semibold">{socialStats.views}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                                <HiOutlineHeart className="h-4 w-4 text-pink-400" />
-                                <span className="font-semibold">{socialStats.likes}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                                <FaShareAlt className="h-3 w-3 text-blue-400" />
-                                <span className="font-semibold">{socialStats.shares}</span>
-                            </div>
-                        </div> */}
 
                         {/* Call to Action Buttons */}
                         <div className="flex flex-col gap-3 pt-2 w-full">
@@ -234,7 +182,7 @@ export default function LatestVideo() {
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center justify-center px-6 py-4 bg-[#fa536b] text-white rounded-lg font-medium text-lg"
                                 onClick={() => window.open('https://music.apple.com/in/album/rose-lenses/1813632776?i=1813632777', '_blank', 'noopener,noreferrer')}
-                                aria-label="Listen on Spotify"
+                                aria-label="Listen on Apple Music"
                             > <FaApple className="h-6 w-6 mr-2" />
                                 <span>Listen on Apple Music</span>
                             </motion.button>
@@ -260,30 +208,9 @@ export default function LatestVideo() {
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
-                                    onLoad={() => setVideoLoaded(true)}
+                                // onLoad={() => setVideoLoaded(true)}
                                 ></iframe>
                             </div>
-
-                            {/* Custom video overlay with play button */}
-                            {/* {showOverlay && (
-                                <div 
-                                    ref={overlayRef}
-                                    className="absolute inset-0 z-20 bg-gradient-to-br from-black/60 via-black/40 to-purple-900/40 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer"
-                                    onClick={handlePlayClick}
-                                >
-                                    <motion.div 
-                                        className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30"
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                                    >
-                                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                                            <FaPlay className="text-white ml-1 h-6 w-6" />
-                                        </div>
-                                    </motion.div>
-                                    <p className="mt-4 font-medium text-lg text-white/90">Watch Now</p>
-                                </div>
-                            )} */}
 
                             {/* Video decorative elements */}
                             <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-50 blur-xl"></div>

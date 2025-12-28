@@ -1,0 +1,9 @@
+﻿yarn run v1.22.22
+$ next build
+   Γû▓ Next.js 15.3.1
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 3.0s
+   Linting and checking validity of types ...
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
