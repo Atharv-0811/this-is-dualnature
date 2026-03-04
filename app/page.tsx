@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <div>
             <AOSInit />
-            <TopBanner />
+            {/* <TopBanner /> */}
             <Navbar />
             <LatestVideo />
             <Hero />

@@ -23,11 +23,11 @@ export default function LatestVideo() {
 
     // Video information
     const videoInfo = {
-        title: "Rose Lenses",
-        description: "From a timeless painting to unyielding resolve, this song explores finding freedom in floating above it all.",
-        released: "June 11, 2025",
-        duration: "3:42",
-        genre: "Jazz Pop"
+        title: "Butterflies",
+        description: "A late night crush, quiet jealousy, and the kind of thoughts that keep you staring at the ceiling.",
+        released: "March 2, 2026",
+        duration: "2:17",
+        genre: "Indie Pop"
     };
 
     // const handlePlayClick = () => {
@@ -113,7 +113,7 @@ export default function LatestVideo() {
         <section
             id="latest-video"
             ref={sectionRef}
-            className="relative bg-gradient-to-br from-black via-gray-900 to-purple-950 text-white py-16 px-4 overflow-hidden min-h-screen mt-24 md:py-24 md:mt-26"
+            className="relative bg-gradient-to-br from-black via-gray-900 to-purple-950 text-white py-16 px-4 overflow-hidden min-h-screen mt-14 md:py-24"
         >
 
             {/* Background elements */}
@@ -161,7 +161,7 @@ export default function LatestVideo() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center justify-center px-6 py-4 bg-[#1db954] text-white rounded-lg font-medium text-lg"
-                                onClick={() => window.open('https://open.spotify.com/album/4Jdg1NOrLi27pYsYPuTaA6?si=dogLzpEpQgCOkY-_prMNgg', '_blank', 'noopener,noreferrer')}
+                                onClick={() => window.open('https://open.spotify.com/album/7xFkiFQhygBzo0TwpGl5TA?si=Mm2fT04hSMWr_KmySWsMzQ', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on Spotify"
                             >
                                 <FaSpotify className="h-6 w-6 mr-2" />
@@ -171,7 +171,7 @@ export default function LatestVideo() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center justify-center px-6 py-4 bg-[#FF0000] text-white rounded-lg font-medium text-lg"
-                                onClick={() => window.open('https://music.youtube.com/watch?v=MRxUxcNAWkg', '_blank', 'noopener,noreferrer')}
+                                onClick={() => window.open('https://music.youtube.com/watch?v=LatiMWMA_wA&si=xaXYPGLJzJzEauG8', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on YouTube Music"
                             >
                                 <FaYoutube className="h-6 w-6 mr-2" />
@@ -181,7 +181,7 @@ export default function LatestVideo() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center justify-center px-6 py-4 bg-[#fa536b] text-white rounded-lg font-medium text-lg"
-                                onClick={() => window.open('https://music.apple.com/in/album/rose-lenses/1813632776?i=1813632777', '_blank', 'noopener,noreferrer')}
+                                onClick={() => window.open('https://music.apple.com/in/album/butterflies-single/1874803892', '_blank', 'noopener,noreferrer')}
                                 aria-label="Listen on Apple Music"
                             > <FaApple className="h-6 w-6 mr-2" />
                                 <span>Listen on Apple Music</span>
@@ -203,7 +203,7 @@ export default function LatestVideo() {
                                 <iframe
                                     ref={videoRef}
                                     className="w-full h-full"
-                                    src="https://www.youtube.com/embed/8H6Z2Of1cjA?si=aSwCLGDuyHk_h3W_"
+                                    src="https://www.youtube.com/embed/LatiMWMA_wA?si=-2GMbgs9bCGiCQdA"
                                     title={videoInfo.title}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -221,10 +221,10 @@ export default function LatestVideo() {
                         </div>
 
                         {/* Video information - mobile only (lg:hidden) */}
-                        <div className="mt-6 lg:hidden">
+                        {/* <div className="mt-6 lg:hidden">
                             <h3 className="text-xl font-bold">{videoInfo.title}</h3>
                             <p className="text-gray-400 mt-2">{videoInfo.description}</p>
-                        </div>
+                        </div> */}
                     </motion.div>
                 </div>
 

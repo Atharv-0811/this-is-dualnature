@@ -16,10 +16,10 @@ export default function Navbar() {
 
     return (
         <motion.nav
-            initial={{ y: -80, opacity: 0 }}
+            initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="fixed top-20 md:top-24 left-0 right-0 mx-auto w-fit bg-charcoal bg-opacity-70 hover:bg-opacity-100 text-white px-8 py-3 border border-gray-500 border-opacity-300 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 z-50"
+            transition={{ duration: 0.2 }}
+            className="fixed top-6 left-0 right-0 mx-auto w-fit bg-charcoal bg-opacity-70 hover:bg-opacity-100 text-white px-8 py-3 border border-gray-500 border-opacity-300 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 z-50"
         >
             <motion.ul
                 className="flex space-x-6"
