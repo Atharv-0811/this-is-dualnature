@@ -128,7 +128,7 @@ export default function ComposerPage() {
                                 title: "Sound Design Reel",
                                 desc: "Foley, Texture, and Atmosphere",
                                 icon: <Mic2 className="w-6 h-6 text-light/50 group-hover:text-coral transition-colors" />,
-                                link: "https://www.behance.net/gallery/234285877/Sound-Design-Reel-Coffee-Run-%28Blender-Open-Movie%29"
+                                link: "https://www.behance.net/atharvchinchkar"
                             },
                             {
                                 title: "Spotify Discography",
