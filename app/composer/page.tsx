@@ -1,11 +1,76 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Download, Play, Music, Mic2, Disc } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play, Music, Mic2, Disc, Film, X, Mail, Instagram } from "lucide-react";
+
+// TODO: replace with the real address before sharing this page.
+const CONTACT_EMAIL = "atharvchinchkar@gmail.com";
+
+// Add a project by copying one entry below. Use `video` for a local clip, `link` for an external page.
+const works = [
+    {
+        title: "Short Film — Prom Scene",
+        desc: "Co-produced the track, mixed and mastered",
+        icon: <Film className="w-5 h-5" />,
+        video: "/composer/prom-scene.webm"
+    },
+    {
+        title: "Score for an Animated Short",
+        desc: "Original orchestral music — watch on YouTube",
+        icon: <Music className="w-5 h-5" />,
+        link: "https://youtu.be/aI9mY1mnf5I?si=uscImKsaJ06Swbnw"
+    },
+    {
+        title: "Sound Design Reel",
+        desc: "Foley, texture and atmosphere — view on Behance",
+        icon: <Mic2 className="w-5 h-5" />,
+        link: "https://www.behance.net/atharvchinchkar"
+    },
+    {
+        title: "Released Music",
+        desc: "Original songs and production — listen on Spotify",
+        icon: <Disc className="w-5 h-5" />,
+        link: "https://open.spotify.com/artist/75lxD3C0pgTahGqOSeZFKB?si=tfzbWAGDRxiuZ0j0FxwtHA"
+    }
+];
+
+// Work without a public link yet. Same idea as `works` — copy a line to add one.
+const credits = [
+    {
+        title: "Theme song — short film",
+        role: "Produced, mixed and mastered. The film is still screening at festivals, so the track isn't public yet."
+    },
+    {
+        title: "Student films — college film department",
+        role: "Original music and sound for departmental productions."
+    },
+    {
+        title: "Podcast intro theme",
+        role: "Written and produced."
+    }
+];
 
 export default function ComposerPage() {
+    const [activeVideo, setActiveVideo] = useState<{ title: string; src: string } | null>(null);
+
+    useEffect(() => {
+        if (!activeVideo) return;
+
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setActiveVideo(null);
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.removeEventListener("keydown", onKeyDown);
+            document.body.style.overflow = "";
+        };
+    }, [activeVideo]);
+
     const fadeInUp = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
@@ -62,6 +127,100 @@ export default function ComposerPage() {
                     </div>
                 </motion.section>
 
+                {/* Recent Work - Compact List/Grid */}
+                <section className="py-16 border-b border-light/5">
+                    <div className="mb-8 max-w-2xl">
+                        <h3 className="font-playfair text-2xl md:text-3xl mb-3">Recent Work</h3>
+                        <p className="font-outfit text-base md:text-lg text-light/60">
+                            A few recent projects. Tap any card to watch or listen.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {works.map((item, i) => (
+                            <motion.div
+                                key={item.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="min-h-40 md:h-44"
+                            >
+                                {item.video ? (
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveVideo({ title: item.title, src: item.video })}
+                                        onMouseEnter={(e) => e.currentTarget.querySelector("video")?.play()}
+                                        onMouseLeave={(e) => e.currentTarget.querySelector("video")?.pause()}
+                                        className="group relative h-full w-full overflow-hidden border border-light/10 hover:border-light/30 text-left transition-all duration-300 cursor-pointer"
+                                    >
+                                        <video
+                                            src={`${item.video}#t=0.1`}
+                                            muted
+                                            loop
+                                            playsInline
+                                            preload="metadata"
+                                            className="absolute inset-0 h-full w-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/20" />
+
+                                        <div className="relative h-full p-4 flex flex-col justify-between gap-4">
+                                            <div className="flex w-full justify-between items-start">
+                                                <span className="text-light/70 group-hover:text-coral transition-colors">{item.icon}</span>
+                                                <Play className="w-4 h-4 text-light/50 group-hover:text-coral transition-colors" />
+                                            </div>
+
+                                            <div>
+                                                <h4 className="font-playfair text-base md:text-lg mb-1 group-hover:text-white transition-colors">{item.title}</h4>
+                                                <p className="font-outfit text-xs text-light/60">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    </button>
+                                ) : item.link ? (
+                                    <Link
+                                        href={item.link}
+                                        target="_blank"
+                                        className="group h-full border border-light/10 hover:border-light/30 bg-light/5 hover:bg-light/10 p-4 flex flex-col justify-between gap-4 transition-all duration-300 cursor-pointer"
+                                    >
+                                        <div className="flex w-full justify-between items-start">
+                                            <span className="text-light/50 group-hover:text-coral transition-colors">{item.icon}</span>
+                                            <ArrowRight className="w-4 h-4 text-light/30 -rotate-45 group-hover:rotate-0 group-hover:text-coral transition-all duration-300" />
+                                        </div>
+
+                                        <div>
+                                            <h4 className="font-playfair text-base md:text-lg mb-1 group-hover:text-white transition-colors">{item.title}</h4>
+                                            <p className="font-outfit text-xs text-light/50">{item.desc}</p>
+                                        </div>
+                                    </Link>
+                                ) : null}
+                            </motion.div>
+                        ))}
+
+                    </div>
+                </section>
+
+                {/* Other Credits */}
+                <section className="py-16 border-b border-light/5">
+                    <div className="mb-8 max-w-2xl">
+                        <h3 className="font-playfair text-2xl md:text-3xl mb-3">Other Credits</h3>
+                        <p className="font-outfit text-base md:text-lg text-light/60">
+                            Work that doesn&apos;t have a video or a public link to share yet.
+                        </p>
+                    </div>
+
+                    <ul className="max-w-3xl border-t border-light/10">
+                        {credits.map((credit) => (
+                            <li
+                                key={credit.title}
+                                className="py-5 border-b border-light/10 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-10"
+                            >
+                                <span className="font-outfit text-base md:text-lg text-light/90 sm:shrink-0">{credit.title}</span>
+                                <span className="font-outfit text-sm text-light/50 sm:text-right sm:max-w-sm">{credit.role}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
                 {/* Content Grid: Bio & Spec Sheet */}
                 <section className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-b border-light/5">
                     {/* Bio Column */}
@@ -72,8 +231,13 @@ export default function ComposerPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <p className="font-outfit text-xl md:text-2xl leading-relaxed text-light/80 mb-6 font-light">
-                                &quot;Bridging 8 years of Western Classical discipline with 6 years of modern Music Production. Specializing in narrative-driven scores that blend orchestral texture with contemporary sound design.&quot;
+                            <h3 className="font-playfair text-2xl md:text-3xl mb-4">About</h3>
+                            <p className="font-outfit text-lg md:text-xl leading-relaxed text-light/80">
+                                A classically trained pianist with over ten years of experience, I compose and produce
+                                original music for short films, animation and visual media. I blend traditional
+                                instrumentation — piano and guitar — with custom-built soundscapes to create versatile,
+                                emotionally driven scores. From the first sketch to the final mix, my focus is on music
+                                that serves the story.
                             </p>
                         </motion.div>
                     </div>
@@ -95,7 +259,7 @@ export default function ComposerPage() {
                                 </li>
                                 <li className="flex flex-col sm:flex-row justify-between sm:items-baseline gap-1 sm:gap-4">
                                     <span className="text-light/40 uppercase text-xs w-32 shrink-0">Primary Instrument</span>
-                                    <span className="text-light/90">Piano & Keyboards (8 Years)</span>
+                                    <span className="text-light/90">Piano & Keyboards (10 Years)</span>
                                 </li>
                                 <li className="flex flex-col sm:flex-row justify-between sm:items-baseline gap-1 sm:gap-4">
                                     <span className="text-light/40 uppercase text-xs w-32 shrink-0">Production</span>
@@ -110,59 +274,75 @@ export default function ComposerPage() {
                     </div>
                 </section>
 
-                {/* Selected Works - Compact List/Grid */}
+                {/* Playlist */}
                 <section className="py-16">
-                    <div className="flex items-center justify-between mb-10">
-                        <h3 className="font-playfair text-2xl md:text-3xl">Selected Works</h3>
+                    <div className="mb-8 max-w-2xl">
+                        <h3 className="font-playfair text-2xl md:text-3xl mb-3">Listen</h3>
+                        <p className="font-outfit text-base md:text-lg text-light/60">
+                            A playlist of unreleased cinematic music. Press play below — no sign-up or download needed.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {[
-                            {
-                                title: "Score for Blender Animation",
-                                desc: "Orchestral Composition",
-                                icon: <Music className="w-6 h-6 text-light/50 group-hover:text-coral transition-colors" />,
-                                link: "https://youtu.be/aI9mY1mnf5I?si=uscImKsaJ06Swbnw"
-                            },
-                            {
-                                title: "Sound Design Reel",
-                                desc: "Foley, Texture, and Atmosphere",
-                                icon: <Mic2 className="w-6 h-6 text-light/50 group-hover:text-coral transition-colors" />,
-                                link: "https://www.behance.net/atharvchinchkar"
-                            },
-                            {
-                                title: "Spotify Discography",
-                                desc: "Modern Production & Arrangement",
-                                icon: <Disc className="w-6 h-6 text-light/50 group-hover:text-coral transition-colors" />,
-                                link: "https://open.spotify.com/artist/75lxD3C0pgTahGqOSeZFKB?si=tfzbWAGDRxiuZ0j0FxwtHA"
-                            }
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="h-64"
+                    <div className="border border-light/10 bg-light/5 p-2 md:p-4">
+                        <iframe
+                            title="Unreleased Cinematic Music — playlist by Dualnature on SoundCloud"
+                            width="100%"
+                            height="450"
+                            scrolling="no"
+                            frameBorder="no"
+                            loading="lazy"
+                            allow="autoplay; encrypted-media"
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A1457904904%3Fsecret_token%3Ds-PHSPzKDNonv&color=%238495a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                            className="block w-full"
+                        />
+                    </div>
+
+                    <p className="mt-4 font-grotesk text-xs text-light/40 tracking-wide">
+                        <Link href="https://soundcloud.com/thisisdualnature" target="_blank" className="hover:text-coral transition-colors">
+                            Dualnature
+                        </Link>
+                        {" · "}
+                        <Link href="https://soundcloud.com/thisisdualnature/sets/unreleased-cinematic-music/s-PHSPzKDNonv" target="_blank" className="hover:text-coral transition-colors">
+                            Unreleased Cinematic Music
+                        </Link>
+                    </p>
+                </section>
+
+                {/* Contact */}
+                <section className="py-16 border-t border-light/5">
+                    <div className="max-w-2xl">
+                        <h3 className="font-playfair text-2xl md:text-3xl mb-3">Get in Touch</h3>
+                        <p className="font-outfit text-base md:text-lg text-light/60 mb-8">
+                            If you have a project coming up, I&apos;d be glad to hear about it — an original score,
+                            a theme song, or mixing and mastering for a track you already have.
+                        </p>
+
+                        <Link
+                            href={`mailto:${CONTACT_EMAIL}`}
+                            className="inline-flex items-center gap-2 bg-light text-charcoal px-6 py-3 hover:bg-coral hover:text-white transition-all duration-300 font-medium text-sm tracking-wide"
+                        >
+                            <Mail className="w-4 h-4" />
+                            <span>{CONTACT_EMAIL}</span>
+                        </Link>
+
+                        <div className="flex flex-wrap gap-x-6 gap-y-3 mt-8">
+                            <Link
+                                href="https://www.instagram.com/thisisdualnature"
+                                target="_blank"
+                                className="inline-flex items-center gap-2 font-outfit text-sm text-light/60 hover:text-coral transition-colors"
                             >
-                                <Link
-                                    href={item.link}
-                                    target="_blank"
-                                    className="group h-full border border-light/10 hover:border-light/30 bg-light/5 hover:bg-light/10 p-6 flex flex-col justify-between transition-all duration-300 cursor-pointer block"
-                                >
-                                    <div className="flex w-full justify-between items-start mb-4">
-                                        {item.icon}
-                                        <ArrowRight className="w-4 h-4 text-light/30 -rotate-45 group-hover:rotate-0 group-hover:text-coral transition-all duration-300" />
-                                    </div>
-
-                                    <div>
-                                        <h4 className="font-playfair text-xl mb-1 group-hover:text-white transition-colors">{item.title}</h4>
-                                        <p className="font-grotesk text-xs text-light/50 uppercase tracking-widest">{item.desc}</p>
-                                    </div>
-                                </Link>
-                            </motion.div>
-                        ))}
-
+                                <Instagram className="w-4 h-4" />
+                                <span>Instagram</span>
+                            </Link>
+                            <Link
+                                href="https://soundcloud.com/thisisdualnature"
+                                target="_blank"
+                                className="inline-flex items-center gap-2 font-outfit text-sm text-light/60 hover:text-coral transition-colors"
+                            >
+                                <Music className="w-4 h-4" />
+                                <span>SoundCloud</span>
+                            </Link>
+                        </div>
                     </div>
                 </section>
 
@@ -171,9 +351,46 @@ export default function ComposerPage() {
             {/* Simple Footer */}
             <footer className="py-8 px-6 md:px-12 lg:px-24 border-t border-light/5 mt-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center text-xs text-light/30 font-grotesk uppercase tracking-wider gap-4">
-                    <span>© {new Date().getFullYear()} Atharv Chinchkar</span>
+                    <span>© {new Date().getFullYear()} Developed by{' '}
+                    <a
+                        href="https://atharvchinchkar.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-coral hover:underline"
+                    >
+                        Atharv Chinchkar
+                    </a></span>
                 </div>
             </footer>
+
+            {activeVideo && (
+                <div
+                    className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
+                    onClick={() => setActiveVideo(null)}
+                >
+                    <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center gap-4 mb-3">
+                            <h4 className="font-playfair text-lg md:text-xl">{activeVideo.title}</h4>
+                            <button
+                                type="button"
+                                onClick={() => setActiveVideo(null)}
+                                className="flex items-center gap-2 border border-light/20 px-4 py-2 text-sm hover:bg-light/10 hover:border-light/40 transition-colors"
+                            >
+                                <X className="w-4 h-4" />
+                                <span>Close</span>
+                            </button>
+                        </div>
+
+                        <video
+                            src={activeVideo.src}
+                            controls
+                            autoPlay
+                            playsInline
+                            className="w-full max-h-[70vh] bg-black"
+                        />
+                    </div>
+                </div>
+            )}
         </div >
     );
 }
