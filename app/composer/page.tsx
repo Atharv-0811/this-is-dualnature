@@ -115,7 +115,7 @@ export default function ComposerPage() {
                         </motion.p>
 
                         <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-                            <Link href="https://on.soundcloud.com/uY5BKsdHdR65CY7OQH" target="_blank" className="flex items-center gap-2 bg-light text-charcoal px-6 py-3 hover:bg-coral hover:text-white transition-all duration-300 font-medium text-sm tracking-wide">
+                            <Link href="https://www.youtube.com/@thisisdualnature" target="_blank" className="flex items-center gap-2 bg-light text-charcoal px-6 py-3 hover:bg-coral hover:text-white transition-all duration-300 font-medium text-sm tracking-wide">
                                 <Music className="w-4 h-4" />
                                 <span>Studio Works</span>
                             </Link>
@@ -235,7 +235,7 @@ export default function ComposerPage() {
                             <p className="font-outfit text-lg md:text-xl leading-relaxed text-light/80">
                                 A classically trained pianist with over ten years of experience, I compose and produce
                                 original music for short films, animation and visual media. I blend traditional
-                                instrumentation — piano and guitar — with custom-built soundscapes to create versatile,
+                                instrumentation with modern soundscapes to create versatile,
                                 emotionally driven scores. From the first sketch to the final mix, my focus is on music
                                 that serves the story.
                             </p>
